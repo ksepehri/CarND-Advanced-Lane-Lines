@@ -17,8 +17,8 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./writeup_media/binary_birds_eye.png "Binary Birds Eye"
-[image2]: ./writeup_media/binary.png "Binary"
+[image1]: ./writeup_media/binary_birds_eye_luv.png "Binary Birds Eye"
+[image2]: ./writeup_media/binary_luv.png "Binary"
 [image3]: ./writeup_media/birds_eye_curved.png "Birds Eye Curved"
 [image4]: ./writeup_media/birds_eye.png "Birds Eye"
 [image5]: ./writeup_media/first_pass_success.png "First Pass Success"
@@ -27,6 +27,7 @@ The goals / steps of this project are the following:
 [image8]: ./writeup_media/lane_lines.png "Lane Lines"
 [image9]: ./writeup_media/perspective_transform.png "Perspective Transform"
 [image10]: ./writeup_media/undistort.png "Undistort"
+[image11]: ./writeup_media/undistort_road.png "Undistort Road"
 
 [video1]: ./project_video_output.mp4 "Video"
 
@@ -61,9 +62,12 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 To demonstrate this step, I will describe how I apply the distortion correction to one of the checkerboard images like this one:
 ![alt text][image9]
 
+Here I apply it to a test image:
+![alt text][image11]
+
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-I used a combination of color and gradient thresholds to generate a binary image (Step 5 in notebook).  Here's an example of my output for this step.
+I used a combination of color and gradient thresholds to generate a binary image (Step 5 in notebook).  Here's an example of my output for this step. I used the LUV color space as it removed extraneous noise and displayed lanes more clearly than HLS.
 
 ![alt text][image2]
 
@@ -89,9 +93,8 @@ dst = np.float32(
 
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
-![alt text][image4]
-![alt text][image3]
 ![alt text][image1]
+![alt text][image3]
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
